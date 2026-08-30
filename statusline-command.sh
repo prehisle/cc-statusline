@@ -26,13 +26,13 @@ format_size() {
 
 win_fmt=$(format_size "$win_size")
 
-# Dim ANSI colors
+# ANSI colors(加粗 + 高对比度,暗色/亮色终端背景都看得清;分隔符用灰色不抢视线)
 RESET="\033[0m"
-C_DIR="\033[2;36m"
-C_MODEL="\033[2;35m"
-C_THINK="\033[2;33m"
-C_CTX="\033[2;32m"
-C_SEP="\033[2;37m"
+C_DIR="\033[1;36m"
+C_MODEL="\033[1;35m"
+C_THINK="\033[1;33m"
+C_CTX="\033[1;32m"
+C_SEP="\033[90m"
 
 parts=()
 parts+=("$(printf "${C_DIR}cwd: %s${RESET}" "$raw_cwd")")
