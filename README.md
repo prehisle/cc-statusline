@@ -2,19 +2,19 @@
 
 给 [Claude Code](https://claude.com/claude-code) 用的一个状态栏(statusline)脚本,一行命令装好。
 
-效果大概长这样(实际颜色为终端暗色调 ANSI 配色):
+效果大概长这样(加粗高对比度 ANSI 配色,深色/浅色终端背景都看得清):
 
 ```
-cwd: /home/you/project | Model: Opus 5 Thinking: max | Ctx(u) Used: 23.4% Win: 1.0M
+cwd: /home/you/project | Model: Opus 5 Thinking: max | Ctx(u) Used: 23.4% (46.8K) Win: 200.0K
 ```
 
 三段信息:
 
 - `cwd`:当前工作目录
 - `Model` / `Thinking`:当前模型名 + 推理强度档位(模型不支持 reasoning effort 时,`Thinking` 那一小段会自动省略,不会瞎编)
-- `Ctx(u) Used` / `Win`:当前上下文窗口已用百分比 + 窗口总大小(自动格式化成 `1.0M` / `200.0K` 这种简写)
+- `Ctx(u) Used` / `Win`:当前上下文窗口已用百分比 + 实际用了多少 token + 窗口总大小(自动格式化成 `1.0M` / `200.0K` 这种简写;实际 token 数取不到时自动退回只显百分比)
 
-所有数值都来自 Claude Code 通过 stdin 传给 statusline 脚本的真实 JSON 数据(`model.display_name`、`effort.level`、`context_window.used_percentage`、`context_window.context_window_size`、`workspace.current_dir`),拿不到的字段直接跳过,不伪造。
+所有数值都来自 Claude Code 通过 stdin 传给 statusline 脚本的真实 JSON 数据(`model.display_name`、`effort.level`、`context_window.used_percentage`、`context_window.total_input_tokens`、`context_window.context_window_size`、`workspace.current_dir`),拿不到的字段直接跳过,不伪造。
 
 ## 一键安装
 
