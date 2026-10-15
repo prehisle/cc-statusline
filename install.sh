@@ -43,4 +43,4 @@ JSON
   echo "    已新建 settings.json"
 fi
 
-echo "==> 完成!重启 Claude Code(或新开一个会话)即可看到状态栏。"
+echo "==> 完成!Claude Code 会自动读取新配置,不用重启。"
